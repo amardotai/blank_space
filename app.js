@@ -63,7 +63,7 @@ app.post("/compose", function(req, res){
   const newblog = new blog({
     title:post.title,
     content:post.content,
-    publisher:req.body.authorName
+    publisher:post.publisher
   })
 
   newblog.save(function(err){
@@ -86,14 +86,15 @@ app.get("/posts/:postId", function(req, res){
     if(!err){
       res.render("post", {
         title: foundBlog.title,
-        content: foundBlog.content
+        content: foundBlog.content,
+        publisher: foundBlog.publisher
       });
     }
   });
 
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT||3000, function() {
   console.log("Server started on port 3000");
 });
 

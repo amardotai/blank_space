@@ -9,11 +9,16 @@
     <h1><%=post.title%></h1>
     <p>
     <%=post.content.substring(0, 100) + " ..."%>
-    <a href="/posts/<%=post._id%>">Read More</a>
+    <a href="/posts/<%=post._id%>">Read More </a>
     </p>
+    <p>By- <%=post.publisher%></p>
 
 
     <% }) %>
-
+  <a href="/compose" class="cButtton">
+    <i class="fas fa-plus"></i>
+    Compose
+  </a>
+  <script src="https://kit.fontawesome.com/cada0c8598.js" crossorigin="anonymous"></script>
 
 <%- include("partials/footer"); -%>

@@ -3,6 +3,27 @@ html {
   position: relative;
 }
 
+.cButtton{
+  font-size: 1.6rem;
+  color: #1abc9c;
+  width: 10rem;
+  height: 4rem;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10rem;
+  right: 5rem;
+  text-align: center;
+  padding-top: 0.7rem;
+  border-radius: 2rem;
+}
+
+.cButtton:hover{
+  color: white;
+  background-color: #1abc9c;
+  text-decoration: none;
+}
+
+
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
