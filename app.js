@@ -52,6 +52,14 @@ app.get("/compose", function(req, res){
   res.render("compose");
 });
 
+app.get("/register",function(req,res){
+  res.render("register")
+});
+
+app.get("/login",function(req,res){
+  res.render("login")
+});
+
 app.post("/compose", function(req, res){
   const post = {
     title: req.body.postTitle,
