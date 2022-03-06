@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container">
       <div class="navbar-header">
         <p class="navbar-brand">AMAR JOURNAL</p>
@@ -17,6 +17,15 @@
           <li id="home"><a href="/">HOME</a></li>
           <li id="about"><a href="/about">ABOUT US</a></li>
           <li id="contact"><a href="/contact">CONTACT US</a></li>
+          <% if(userStatus===false){ %>
+            <li id="login"><a href="/login">LOGIN</a></li>
+            <li id="login"><a href="/login">REGISTER</a></li>
+          <%}%>
+
+          <% if(userStatus===true){%>
+            <li id="posts"><a href="/myPosts">POSTS</a></li>
+            <li id="logout"><a href="/logout">LOGOUT</a></li>
+          <%}%>
         </ul>
     </div>
   </nav>

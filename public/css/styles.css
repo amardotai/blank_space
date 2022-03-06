@@ -10,8 +10,8 @@ html {
   width: 10rem;
   height: 4rem;
   text-decoration: none;
-  position: absolute;
-  bottom: 10rem;
+  position: fixed;
+  bottom: 8rem;
   right: 5rem;
   text-align: center;
   padding-top: 0.7rem;
@@ -19,11 +19,25 @@ html {
 }
 
 .cButtton:hover{
-  color: white;
+  color:#fff;
   background-color: #1abc9c;
   text-decoration: none;
 }
 
+.rlButton {
+  text-decoration: none;
+  
+}
+
+form label{
+  padding-right: 2rem;
+}
+
+.formCell {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
 
 .container-fluid {
     padding-top: 70px;
@@ -61,6 +75,3 @@ html {
   color: #fff;
 }
 
-form label{
-  padding-right: 2rem;
-}
