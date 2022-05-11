@@ -34,7 +34,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/blogDB");
+mongoose.connect("mongodb+srv://Amar-owner:b95NKPYtz6h10L30@cluster0.ob9je.mongodb.net/blogDB");
 
 
 //Mongoose schema settings
@@ -184,6 +184,19 @@ app.get("/logout", function(req,res){
 
 
 //All post requests
+app.post("/search", function(req,res){
+  const s = req.body.search;
+  blog.find({title:s}, function(err,foundBlogs){
+    if(!err){
+      res.render("searched",{ 
+        posts:foundBlogs,
+        userStatus:false
+      })
+    }
+  })
+
+})
+
 app.post("/compose", function(req, res){
   const post = {
     title: req.body.postTitle,
@@ -252,3 +265,5 @@ app.post("/login",function(req,res){
 app.listen(process.env.PORT||3000, function() {
   console.log("Server started on port 3000");
 });
+
+

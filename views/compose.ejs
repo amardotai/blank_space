@@ -1,14 +1,20 @@
 
 <%- include("partials/header"); -%>
-    <h1>Compose</h1>
+    <h1>Com<span style="text-decoration: underline;">pose</span></h1>
+    <p style="display: inline;">Font size:</p>
+    <button class="rlButton">Small</button>
+    <button class="rlButton">Large</button>
+    <button class="rlButton">Larger</button>
+    
+    
     <form class="" action="/compose" method="post">
       <div class="form-group">
         <label>Title</label>
         <input class="form-control" type="text" name="postTitle">
         <label>Post</label>
-        <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
+        <textarea id="expandable" class="form-control" name="postBody" rows="15" cols="30" onclick="tA()"></textarea>
       </div>
-      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+      <button class="btn btn-primary rlButton" type="submit" name="button" >Publish</button>
     </form>
 
 <%- include("partials/footer"); -%>

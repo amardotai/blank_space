@@ -10,14 +10,28 @@
     <p> <%= startingContent %> </p>
 
 
-  <%  posts.forEach(function(post){ %>
+  <%  posts.reverse().forEach(function(post){ %>
 
-    <h1><%=post.title%></h1>
-    <p>
-    <%=post.content.substring(0, 100) + " ..."%>
-    <a href="/posts/<%=post._id%>">Read More </a>
-    </p>
-    <p>By- <%=post.publisher%></p>
+      <div class="post">
+        <div class="posthalf">
+          <h1><%=post.title%></h1>
+          <p>
+          <%=post.content.substring(0, 100) + " ..."%>
+          <a href="/posts/<%=post._id%>">Read More </a>
+          </p>
+          <p>By- <%=post.publisher%></p>
+        </div>
+        <div class="postcontroller">
+          <div class="controls">
+            <a href=""><i class="bi bi-trash3-fill"></i></a>
+          </div>
+          <div class="controls">
+            <a href=""><i class="bi bi-hand-thumbs-up-fill"></i></a>
+          </div>
+      
+      
+        </div>
+      </div>
 
 
     <% }) %>

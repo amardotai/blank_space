@@ -1,17 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+:root{
+  --primary:#1abc9c;
+  --shadow:#8d9493;
+  --secondary:#d9dfde;
+  --hover-font:#fff;
+  --font:#000;
+
+}
+::selection{
+  color: var(--hover-font);
+  background: var(--primary);
+}
 html {
   min-height: 100%;
   position: relative;
 }
+body{
+  background-color:#e4e1e1;
+  background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
 
+
+}
 .cButtton{
   font-size: 1.6rem;
   color: #1abc9c;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   width: 10rem;
   height: 4rem;
   text-decoration: none;
   position: fixed;
-  bottom: 8rem;
+  bottom: 15rem;
   right: 5rem;
   text-align: center;
   padding-top: 0.7rem;
@@ -25,10 +43,58 @@ html {
 }
 
 .rlButton {
+  color: var(--font);
   text-decoration: none;
-  
+  width: 8rem;
+  height: 4rem;
+  background-color: var(--secondary);
+  box-shadow: 3px 3px var(--shadow);
+  border:3px solid var(--primary);
+  border-radius: 8px;
+
+}
+.rlButton:hover{
+  color:var(--hover-font);
+  background-color: var(--primary);
+  border:3px solid var(--primary);
 }
 
+.post, .post i{
+  text-decoration: none;
+  background-color:#c6c6c600;
+  border-radius: 15px;
+  padding-left: 10px;
+  transition: transform .4s;
+  display:flex;
+  justify-content: space-between;
+  color: #000;
+}
+.post i:hover{
+  color: #fff;
+}
+.post:hover{
+  background-color:#1abc9c2d ;
+  color: #fff;
+  transform: scale(1.15);
+  animation: mymove 1s 1;
+}
+@keyframes mymove{
+  from{background-color: #c6c6c600;}
+  to{background-color:#1abc9c2d ;}
+}
+.postcontroller{
+  display: flex;
+  align-self: center;
+  margin-right: 5rem;
+}
+.controls{
+  margin: 1.5rem;
+  font-size: 2rem;
+}
+.controls a{
+  text-decoration: none;
+  color: var(--font);
+}
 form label{
   padding-right: 2rem;
 }
@@ -38,40 +104,185 @@ form label{
   justify-content: space-between;
   width: 50%;
 }
-
+.brandbox{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--primary);
+  color: var(--font);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.brandbox .brand_logo{
+  color:var(--hover-font);
+  font-family: 'Abel', sans-serif;
+  font-size: 48px;
+}
+.brandbox .searchbar{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.brandbox .searchbar a{
+  text-decoration: none;
+  color: var(--hover-font);
+}
+.brandbox .searchbar input{
+  border: #fff;
+  border-radius: 20px;
+  height: 28px;
+}
+.brandbox_padding{
+  padding-bottom: 60px;
+}
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
 }
-.navbar {
+.navigation{
+    position:fixed;
+    top: 20vh;
+    width: 80px;
     padding-top: 15px;
     padding-bottom: 15px;
+	  background-color:var(--hover-font);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
     border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
+    border-radius: 10px;
+    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.05);
     font-size: 12px;
     letter-spacing: 5px;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+.navigation .nav_toggle{
+  position: relative;
+  width: 80px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 20px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
+
+.navigation .nav_toggle::before{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background: #000;
+    transform: translateY(-10px);
+    transition: 0.5s;
+}
+.navigation .nav_toggle::after{
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background: #000;
+  transform: translateY(10px);
+  transition: 0.5s;
+  box-shadow: 0 -10px #000;
+}
+.navigation.active{
+  width: 220px;
+}
+.navigation.active .nav_toggle::before{
+  transform: translateY(0px) rotate(45deg);
+}
+.navigation.active .nav_toggle::after{
+  transform: translateY(0px) rotate(-45deg);
+  box-shadow: 0 0 #000;
+}
+.navigation .menu{
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  transition: 0.5s;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.navigation .menu li{
+  list-style: none;
+}
+.navigation .menu li a{
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  color: #000;
+  border-radius: 10px;
+}
+.navigation .menu li a:hover{
+  background: var(--primary);
+  color: var(--hover-font);
+}
+.navigation .menu li a .icon{
+  position: relative;
+  min-width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+.navigation .menu li a .text{
+  position: relative;
+  min-width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-left: 30px;
 }
 
 .footer-padding {
-	padding-bottom: 60px;
+	padding-bottom: 120px;
 }
 
 .footer {
 	position: absolute;
-	text-align: center;
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
 	bottom: 0;
 	width: 100%;
-	height: 60px;
-	background-color: #1abc9c;
+	height: 100px;
+	background-color: var(--primary);
+  color: var(--hover-font);
+  padding: 10px;
+}
+.footer .brand_box{
+  font-size: 64px;
+  font-weight: bolder;
+  font-family: 'Abel', sans-serif;
+}
+.footer .user_links{
+  border-left: 2px solid rgba(0, 0, 0, 0.05);
+}
+.footer .user_links a{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-decoration: none;
+  color: var(--hover-font);
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-.footer p {
-	margin-top: 25px;
-	font-size: 12px;
-  color: #fff;
+.footer .user_links a:hover{
+  background: var(--hover-font);
+  color: var(--primary);
 }
 
+#expandable{
+  height: 50vh;
+}

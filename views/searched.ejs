@@ -1,9 +1,9 @@
 <%- include("partials/header"); -%>
-    <h1>Hello</h1>
+    <h1>Your Search Results</h1>
     
 
 
-  <%  posts.reverse().forEach(function(post){ %>
+  <%  posts.forEach(function(post){ %>
 
     <div class="post">
       <div class="posthalf">
@@ -26,6 +26,8 @@
       </div>
       
     </div>
+
+
     <% }) %>
   <a href="/compose" class="cButtton">
     <i class="fas fa-plus"></i>
