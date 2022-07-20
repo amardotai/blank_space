@@ -42,7 +42,9 @@ const blogSchema =new mongoose.Schema({
   title: String,
   content: String,
   publisher: String,
-  userId: String
+  userId: String,
+  commentNum: {type:Number,default:0},
+  comments: [mongoose.Schema.Types.Mixed]
 });
 const blogUserSchema = new mongoose.Schema({
   name: String,
@@ -157,9 +159,12 @@ app.get("/posts/:postId", function(req, res){
     if(req.isAuthenticated()){
       if(!err){
         res.render("post", {
+          id:foundBlog._id,
           title: foundBlog.title,
           content: foundBlog.content,
           publisher: foundBlog.publisher,
+          commentNum: foundBlog.commentNum,
+          comments: foundBlog.comments,
           userStatus:true
         });
       }
@@ -169,6 +174,8 @@ app.get("/posts/:postId", function(req, res){
           title: foundBlog.title,
           content: foundBlog.content,
           publisher: foundBlog.publisher,
+          commentNum: foundBlog.commentNum,
+          comments: foundBlog.comments,
           userStatus:false
         });
       }
@@ -280,7 +287,27 @@ app.post("/login",function(req,res){
   })
 })
 
-
+app.post("/comment/:postId",function(req,res){
+  const newComment = {
+    content:req.body.comment,
+    writen:currentLoggedInUser
+  };
+  console.log(currentLoggedInUser);
+  const requestedId = req.params.postId;
+  blog.findOne({_id:requestedId},function(err,foundBlog){
+    if(!err){
+      let comm = foundBlog.commentNum+1;
+      let commAr = foundBlog.comments;
+      commAr.push(newComment);
+      blog.updateOne({_id:requestedId},{commentNum:comm,comments:commAr},function(err){
+          if(!err){
+            res.redirect("/posts/"+String(requestedId));
+          }
+      })
+    }
+  });
+  
+})
 
 
 app.listen(process.env.PORT||3000, function() {

@@ -1,7 +1,29 @@
 <%- include("partials/header"); -%>
 
-  <h1><%=title%></h1>
-  <p><%=content%></p>
-  <p><%=publisher%></p>
+  <div class="post-body">
+    <h1><%=title%></h1>
+    <p><%=content%></p>
+    <p>By: <%=publisher%></p>
+  </div>
+  <h3>Comments</h3>
+  <% if(userStatus == false){ %>
+    <h6>Login to post a comment</h6>
+  <% } %>
 
+  <% if(userStatus == true){ %>
+
+    <form action="/comment/<%=id %>" method="POST" class="comment-box">
+      <label for="comment" >Post a comment</label>
+      <input type="text" name="comment" id="comment" autocomplete="off">
+      <button type="submit">Post</button>
+    </form>
+
+  <% } %>
+    <p><%=commentNum%> comments yet</p>
+  <% comments.reverse().forEach(function(comment){%>
+    <div class="comment-box">
+      <p><b><%=comment.writen%></b></p>
+      <p><%=comment.content%></p>
+    </div>
+  <% }) %>
 <%- include("partials/footer"); -%>

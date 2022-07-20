@@ -286,3 +286,25 @@ form label{
 #expandable{
   height: 50vh;
 }
+
+.comment-box{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2.5rem 1.2rem;
+}
+
+.comment-box input{
+  margin: 0.75rem 0;
+  width: 40vw;
+}
+.comment-box button{
+  margin: 0.75rem 0;
+  width: 5vw;
+  border-radius: 10px;
+}
+.post-body{
+  min-height: 49vh;
+  margin: 3rem 0;
+}
